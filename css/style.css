@@ -1,292 +1,190 @@
-/* Reset básico para margens, padding e box-sizing */
+/* RESET GERAL */
 * {
     margin: 0;
-    /* Remove a margem padrão */
     padding: 0;
-    /* Remove o padding padrão */
     box-sizing: border-box;
-    /* Inclui padding e borda no cálculo da largura e altura */
 }
 
-/* Estilo geral do corpo */
+/* BODY FUTURISTA */
 body {
     font-family: 'Arial', sans-serif;
-    /* Definição da fonte padrão */
-    background: linear-gradient(135deg, #070c24, #4b0d19);
-    /* Gradiente de fundo */
-    background-image: url('./img/background.png'), url('tech-lines.png'), linear-gradient(135deg, #070c24, #4b0d19);
-    /* Camadas de imagens de fundo */
-    background-blend-mode: overlay;
-    /* Mistura as imagens com o gradiente */
-    background-size: cover, contain;
-    /* Tamanho das imagens de fundo */
+    background-color: #000; /* fundo preto absoluto */
     color: #fff;
-    /* Cor do texto */
-    display: flex;
-    /* Utiliza o modelo flexbox */
-    align-items: center;
-    /* Centraliza verticalmente */
-    justify-content: center;
-    /* Centraliza horizontalmente */
     min-height: 100vh;
-    /* Altura mínima de 100% da tela */
-    margin: 0;
-    /* Remove margens */
-    animation: fadeIn 1.5s ease-in-out;
-    /* Animação de fade-in */
+    display: flex;
     flex-direction: column;
-    /* Organiza os itens em coluna */
-}
-
-/* Animação para transição suave de opacidade e movimento */
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-        /* Invisível no início */
-        transform: translateY(-20px);
-        /* Movido para cima */
-    }
-
-    100% {
-        opacity: 1;
-        /* Totalmente visível */
-        transform: translateY(0);
-        /* Posição original */
-    }
-}
-
-/* Animação de pulsação para criar efeito de brilho */
-@keyframes pulse {
-
-    0%,
-    100% {
-        box-shadow: 0 0 20px #BB1228;
-        /* Sombra pequena no início e fim */
-    }
-
-    50% {
-        box-shadow: 0 0 40px #BB1228;
-        /* Sombra maior no meio */
-    }
-}
-
-/* Cartão de perfil com fundo translúcido e animações */
-.profile-card {
-    background: rgba(24, 11, 11, 0.3);
-    /* Fundo translúcido */
-    backdrop-filter: blur(50px);
-    /* Efeito de desfoque no fundo */
-    -webkit-backdrop-filter: blur(5px);
-    /* Compatibilidade com navegadores Webkit */
-    border-radius: 20px;
-    /* Bordas arredondadas */
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
-    /* Sombra para profundidade */
+    align-items: center;
+    justify-content: center;
     padding: 20px;
-    /* Espaçamento interno */
-    text-align: center;
-    /* Centraliza o texto */
-    width: 90%;
-    /* Largura relativa a 90% da tela */
-    max-width: 400px;
-    /* Largura máxima de 400px */
     position: relative;
-    /* Para ajustar o posicionamento */
-    bottom: 10px;
-    /* Desloca o cartão um pouco para baixo */
-    animation: slideIn 1.5s ease-in-out, floating 3s ease-in-out infinite;
-    /* Animação de entrada e flutuação */
+    z-index: 0;
 }
 
-/* Animação de flutuação para dar leveza ao cartão */
-@keyframes floating {
-
-    0%,
-    100% {
-        transform: translateY(0);
-        /* Posição original no início e fim */
-    }
-
-    50% {
-        transform: translateY(-10px);
-        /* Flutua 10px para cima no meio */
-    }
+#particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
 }
 
-/* Animação de deslizamento horizontal */
-@keyframes slideIn {
-    0% {
-        transform: translateX(-100%);
-        /* Começa fora da tela */
-        opacity: 0;
-        /* Invisível */
-    }
 
-    100% {
-        transform: translateX(0);
-        /* Posição original */
-        opacity: 1;
-        /* Visível */
-    }
+/* CONTAINER DO CARTÃO */
+.profile-card {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.2);
+    padding: 30px 20px;
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+    animation: slideIn 1.2s ease-out, floating 4s ease-in-out infinite;
+    z-index: 1;
 }
 
-/* Espaçamento inferior no cabeçalho */
+
+/* CABEÇALHO */
 .header {
     margin-bottom: 20px;
-    /* Espaçamento abaixo do cabeçalho */
 }
 
-/* Estilos para a imagem de perfil */
 .profile-image {
-    width: 150px;
-    /* Largura da imagem */
-    height: 150px;
-    /* Altura da imagem */
+    width: 140px;
+    height: 140px;
     border-radius: 50%;
-    /* Imagem circular */
     object-fit: cover;
-    /* Preenche o espaço sem distorcer */
-    object-position: top;
-    /* Foca na parte superior da imagem */
-    border: 4px solid #BB1228;
-    /* Borda laranja vibrante */
+    border: 3px solid #39ff14;
     animation: pulse 2s infinite;
-    /* Animação de pulsação contínua */
-}
-
-/* Efeito de brilho ao passar o mouse sobre a imagem */
-.profile-image:hover {
-    filter: brightness(1.3);
-    /* Aumenta o brilho no hover */
     transition: filter 0.3s ease-in-out;
-    /* Transição suave */
 }
 
-/* Estilos para o título */
+.profile-image:hover {
+    filter: brightness(1.4);
+}
+
 h1 {
     font-size: 1.8em;
-    /* Tamanho da fonte */
-    margin: 15px 0;
-    /* Margens superior e inferior */
+    margin: 15px 0 5px;
     font-weight: bold;
-    /* Negrito */
 }
 
-/* Contêiner de botões com layout flexível */
+/* BOTÕES */
 .buttons {
     display: flex;
-    /* Modelo flexbox */
     flex-direction: column;
-    /* Coloca os botões em coluna */
     gap: 15px;
-    /* Espaço entre os botões */
+    margin-top: 10px;
 }
 
-/* Estilos para os botões */
 .button {
     text-decoration: none;
-    /* Remove sublinhado */
     color: #fff;
-    /* Cor do texto */
-    padding: 15px;
-    /* Espaçamento interno */
+    padding: 14px;
     border: 2px solid #fff;
-    /* Borda branca */
     border-radius: 30px;
-    /* Bordas arredondadas */
     font-weight: bold;
-    /* Negrito */
-    transition: background 0.3s, color 0.3s;
-    /* Transição suave nas cores */
+    transition: all 0.3s ease-in-out;
     position: relative;
-    /* Para uso de pseudo-elementos */
     overflow: hidden;
-    /* Esconde o conteúdo excedente */
 }
 
-/* Pseudo-elemento para efeito de hover nos botões */
 .button::before {
     content: "";
-    /* Elemento vazio para criar o efeito */
     position: absolute;
-    /* Posição absoluta */
     top: 0;
     left: -100%;
-    /* Começa fora do botão */
     width: 100%;
-    /* Cobre toda a área do botão */
     height: 100%;
-    /* Preenche toda a altura */
-    background: rgba(255, 255, 255, 0.2);
-    /* Fundo branco translúcido */
+    background: rgba(255, 255, 255, 0.1);
     transition: left 0.4s;
-    /* Transição suave para o movimento */
 }
 
-/* Efeito hover nos botões */
 .button:hover::before {
     left: 100%;
-    /* Move o efeito da esquerda para a direita */
 }
 
 .button:hover {
     background: #fff;
-    /* Muda o fundo para branco */
-    color: #BB1228;
-    /* Muda a cor do texto para laranja */
+    color: #39ff14;
+    border-color: #39ff14;
 }
 
-/* Estilos para o texto do rodapé */
+/* BOTÃO VERDE NEON */
+.button-neon {
+    background: #39ff14;
+    color: #000;
+    border: 2px solid #39ff14;
+
+}
+
+.button-neon:hover {
+    background: #000;
+    color: #39ff14;
+    box-shadow: 0 0 20px #39ff14, 0 0 40px #39ff14;
+}
+
+/* TEXTO AUXILIAR */
 .footer-text {
-    margin-top: 30px;
-    /* Espaçamento superior */
+    margin-top: 20px;
     font-size: 0.9em;
-    /* Tamanho da fonte */
-    color: #ccc;
-    /* Cor cinza clara */
+    color: #aaa;
 }
 
-/* Estilos para o rodapé */
+/* RODAPÉ FIXO */
 footer {
-    background: rgba(15, 15, 20, 0.3);
-    /* Fundo translúcido */
-    backdrop-filter: blur(5px);
-    /* Desfoque de fundo */
-    -webkit-backdrop-filter: blur(5px);
-    /* Compatibilidade com Webkit */
-    text-align: center;
-    /* Centraliza o texto */
-    color: #ccc;
-    /* Cor do texto cinza claro */
-    font-size: 0.9em;
-    /* Tamanho da fonte */
-    padding: 10px 0;
-    /* Espaçamento interno vertical */
-    width: 100%;
-    /* Ocupa toda a largura da tela */
     position: fixed;
-    /* Fixa o rodapé na parte inferior */
     bottom: 0;
-    /* Posiciona o rodapé no fim da tela */
     left: 0;
-    /* Alinhamento à esquerda */
-    animation: footerSlideUp 2s ease-in-out;
-    /* Animação de deslizamento */
+    width: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    color: #888;
+    font-size: 0.85em;
+    text-align: center;
+    padding: 12px 0;
+    z-index: 1;
+    animation: footerSlideUp 1.5s ease-in-out;
 }
 
-/* Animação para o rodapé deslizar para cima */
+/* ANIMAÇÕES */
+@keyframes slideIn {
+    0% {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes floating {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 0 8px #39ff14;
+    }
+    50% {
+        box-shadow: 0 0 18px #39ff14;
+    }
+}
+
 @keyframes footerSlideUp {
     0% {
         transform: translateY(100%);
-        /* Fora da tela no início */
         opacity: 0;
-        /* Invisível no início */
     }
-
     100% {
         transform: translateY(0);
-        /* Posição original */
         opacity: 1;
-        /* Visível */
     }
 }

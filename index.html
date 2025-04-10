@@ -3,49 +3,46 @@
 
 <head>
     <meta charset="UTF-8">
-    <!-- Define a codificação de caracteres como UTF-8, garantindo suporte a caracteres especiais -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Ajusta a visualização para dispositivos móveis, garantindo que o layout seja responsivo -->
-    <link rel="icon" href="css/img/favicon-icon.png" type="image/x-icon">
-    <!-- Define o ícone do site (favicon) -->
-    <link rel="stylesheet" href="css/style.css">
-    <!-- Link para o arquivo CSS externo que estiliza o conteúdo da página -->
-    <link rel="stylesheet" href="css/responsive.css">
-    <!-- Link para o arquivo CSS adicional que contém regras específicas para garantir a responsividade da página -->
     <title>Linktree | Julian Valdez</title>
-    <!-- Título da página que aparece na aba do navegador -->
+    <link rel="icon" href="css/img/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
 </head>
 
 <body>
-    <div class="profile-card">
-        <!-- Div principal que contém o card do perfil -->
-        <div class="header">
-            <!-- Cabeçalho do card, inclui a imagem do perfil e a saudação -->
-            <img src="css/img/perfil.png" alt="Julian" class="profile-image">
-            <!-- Imagem do perfil de Julian -->
-            <h1>Oi, eu sou o Julian!</h1>
-            <!-- Saudação principal -->
-            <p class="footer-text">Clique nos botões abaixo para ser redirecionado.</p>
-            <!-- Texto explicativo indicando a ação dos botões -->
-        </div>
-        <div class="buttons">
-            <!-- Div que contém os botões de links -->
-            <a href="https://portfolio-julian-valdez.vercel.app/" target="_blank" class="button">PORTFÓLIO</a>
+        <!-- tsParticles CDN para partículas interativas -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+        <script src="particles.js"></script>
+    <!-- Container para partículas -->
+    <div id="particles-js"></div>
 
+
+    <!-- Card de perfil -->
+    <div class="profile-card">
+        <div class="header">
+            <img src="css/img/perfil.png" alt="Julian" class="profile-image">
+            <h1>Oi, eu sou o Julian!</h1>
+            <p class="footer-text">Clique nos botões abaixo para ser redirecionado.</p>
+        </div>
+
+        <div class="buttons">
+            <a href="https://www.placedisplay.com.br" target="_blank" class="button button-neon">PLACE DISPLAY</a>
+            <a href="https://portfolio-julian-valdez.vercel.app/" target="_blank" class="button">PORTFÓLIO</a>
             <a href="https://www.linkedin.com/in/valdezjulian/" target="_blank" class="button">LINKEDIN</a>
-            <!-- Botão que redireciona para o perfil do LinkedIn, abre em nova aba -->
             <a href="https://github.com/valdezjulian" target="_blank" class="button">GITHUB</a>
-            <!-- Botão que redireciona para o perfil do GitHub, abre em nova aba -->
-            <a href="https://www.instagram.com/valdezjulian.dev/" class="button">INSTAGRAM</a>
-            <!-- Botão que redireciona para o perfil do Instagram -->
-            <a href="https://api.whatsapp.com/send?phone=5567992146350" class="button">CONTATO</a>
-            <!-- Botão que redireciona para contato via WhatsApp -->
+            <a href="https://www.instagram.com/valdezjulian.dev/" target="_blank" class="button">INSTAGRAM</a>
+            <a href="https://api.whatsapp.com/send?phone=5567992146350" target="_blank" class="button">CONTATO</a>
         </div>
     </div>
+
+    <!-- Rodapé -->
     <footer>
         &copy; 2024 Julian Valdez. Todos os direitos reservados.
-        <!-- Rodapé da página com direitos autorais -->
     </footer>
+
+
 </body>
 
 </html>
