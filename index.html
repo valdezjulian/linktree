@@ -12,9 +12,35 @@
 </head>
 
 <body>
-        <!-- tsParticles CDN para partículas interativas -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
-        <script src="particles.js"></script>
+
+    <button id="theme-toggle" class="theme-toggle" aria-label="Ativar modo claro" title="Alternar tema">
+        <!-- Ícone Lua Tech -->
+        <svg class="icon icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M21 13.5a8.5 8.5 0 1 1-10.5-10 7 7 0 1 0 10.5 10z" fill="none" stroke="currentColor" />
+            <!-- “circuitos” -->
+            <circle cx="9" cy="6" r="1" fill="currentColor" />
+            <circle cx="6.5" cy="10" r="1" fill="currentColor" />
+            <circle cx="11" cy="14" r="1" fill="currentColor" />
+            <path d="M9 6 L7.2 8 M6.5 10 L8.5 12 M11 14 L9.5 16" stroke="currentColor" fill="none" />
+        </svg>
+
+        <!-- Ícone Sol Tech -->
+        <svg class="icon icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" />
+            <!-- raios “placa” -->
+            <path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1"
+                stroke="currentColor" fill="none" />
+            <!-- micro cortes tech -->
+            <path d="M9 12h6M12 9v6" stroke="currentColor" />
+        </svg>
+
+        <span class="sr-only">Alternar tema</span>
+    </button>
+
+
+    <!-- tsParticles CDN para partículas interativas -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script src="particles.js"></script>
     <!-- Container para partículas -->
     <div id="particles-js"></div>
 
@@ -28,7 +54,7 @@
         </div>
 
         <div class="buttons">
-            <a href="https://www.placedisplay.com.br" target="_blank" class="button button-neon">PLACE DISPLAY</a>
+            <a href="https://www.placedisplay.com.br" target="_blank" class="button button-neon">PLACE</a>
             <a href="https://portfolio-julian-valdez.vercel.app/" target="_blank" class="button">PORTFÓLIO</a>
             <a href="https://www.linkedin.com/in/valdezjulian/" target="_blank" class="button">LINKEDIN</a>
             <a href="https://github.com/valdezjulian" target="_blank" class="button">GITHUB</a>
@@ -41,6 +67,9 @@
     <footer>
         &copy; 2024 Julian Valdez. Todos os direitos reservados.
     </footer>
+
+
+    <script defer src="script.js"></script>
 
 
 </body>

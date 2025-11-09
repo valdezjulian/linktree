@@ -1,190 +1,299 @@
 /* RESET GERAL */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* BODY FUTURISTA */
+/* =========================
+   PALETAS (DARK / LIGHT)
+   ========================= */
+:root {
+  /* DARK (padrão) */
+  --bg-color: #0a0a0a;
+  --surface-color: rgba(0, 0, 0, 0.6);
+  --text-color: #f5f7fa;
+  --muted-color: #b9c0cc;
+  --border-color: rgba(255, 255, 255, 0.14);
+
+  /* Acentos brand */
+  --accent-color: #39ff14;       /* verde neon Place */
+  --accent-ink: #07140a;         /* texto sobre o botão neon */
+  --ring-color: rgba(57, 255, 20, 0.45);
+
+  /* Partículas */
+  --particle-color: #39ff14;     /* azul-ciano discreto no dark (evita poluir o neon) */
+}
+
+[data-theme="light"] {
+  /* LIGHT refinado */
+  --bg-color: #f6f7f9;           /* off-white neutro (menos “estouro” que #fff puro) */
+  --surface-color: rgba(255, 255, 255, 0.75);
+  --text-color: #0e1116;
+  --muted-color: #606a78;
+  --border-color: #e6e9ef;
+
+  /* Mantém o verde Place, mas com melhor legibilidade no claro */
+  --accent-color: #16df5f;       /* verde mais “clean” no claro (primo do neon) */
+  --accent-ink: #05240f;
+
+  /* Partículas suaves (não brigam com conteúdo) */
+  --particle-color: #000000;     /* azul claro desaturado */
+}
+
+/* =========================
+   BASE / LAYOUT
+   ========================= */
+html, body { height: 100%; }
+
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #000; /* fundo preto absoluto */
-    color: #fff;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    position: relative;
-    z-index: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+  z-index: 0;
+  transition: background-color .6s ease, color .6s ease;
 }
 
+/* Plano de fundo / Partículas */
 #particles-js {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* fica atrás do conteúdo */
+  /* leve gradiente que acompanha o tema */
+  background:
+    radial-gradient(1200px 800px at 12% 10%,
+      rgba(255,255,255,.06) 0%,
+      transparent 70%);
 }
 
-
-/* CONTAINER DO CARTÃO */
+/* =========================
+   COMPONENTES
+   ========================= */
 .profile-card {
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(15px);
-    border-radius: 20px;
-    box-shadow: 0 0 20px rgba(57, 255, 20, 0.2);
-    padding: 30px 20px;
-    text-align: center;
-    max-width: 400px;
-    width: 100%;
-    animation: slideIn 1.2s ease-out, floating 4s ease-in-out infinite;
-    z-index: 1;
+  background: var(--surface-color);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 10px 40px rgba(0,0,0,.18);
+  padding: 30px 20px;
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+  animation: slideIn 1.2s ease-out, floating 4s ease-in-out infinite;
+  z-index: 1;
+  transition: background .6s ease, border-color .6s ease, box-shadow .3s ease;
 }
 
-
-/* CABEÇALHO */
-.header {
-    margin-bottom: 20px;
-}
+/* Cabeçalho */
+.header { margin-bottom: 20px; }
 
 .profile-image {
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid #39ff14;
-    animation: pulse 2s infinite;
-    transition: filter 0.3s ease-in-out;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--accent-color);
+  animation: pulse 2s infinite;
+  transition: filter .3s ease-in-out, border-color .6s ease, box-shadow .6s ease;
+  box-shadow: 0 0 0 3px rgba(0,0,0,.35), 0 0 40px var(--ring-color);
 }
 
-.profile-image:hover {
-    filter: brightness(1.4);
-}
+.profile-image:hover { filter: brightness(1.12); }
 
 h1 {
-    font-size: 1.8em;
-    margin: 15px 0 5px;
-    font-weight: bold;
+  font-size: 1.8em;
+  margin: 15px 0 5px;
+  font-weight: bold;
+  color: var(--text-color);
+  transition: color .6s ease;
 }
 
-/* BOTÕES */
+/* Texto auxiliar */
+.footer-text {
+  margin-top: 20px;
+  font-size: 0.9em;
+  color: var(--muted-color);
+  transition: color .6s ease;
+}
+
+/* Botões */
 .buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 10px;
 }
 
 .button {
-    text-decoration: none;
-    color: #fff;
-    padding: 14px;
-    border: 2px solid #fff;
-    border-radius: 30px;
-    font-weight: bold;
-    transition: all 0.3s ease-in-out;
-    position: relative;
-    overflow: hidden;
+  text-decoration: none;
+  color: var(--text-color);
+  padding: 14px;
+  border: 2px solid var(--text-color);
+  border-radius: 30px;
+  font-weight: bold;
+  position: relative;
+  overflow: hidden;
+  transition:
+    color .25s ease,
+    border-color .25s ease,
+    background-color .25s ease,
+    box-shadow .25s ease,
+    transform .12s ease;
 }
 
+/* brilho de varredura */
 .button::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.1);
-    transition: left 0.4s;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.1);
+  transition: left .4s;
 }
 
-.button:hover::before {
-    left: 100%;
-}
+.button:hover::before { left: 100%; }
 
 .button:hover {
-    background: #fff;
-    color: #39ff14;
-    border-color: #39ff14;
+  background: var(--text-color);
+  color: var(--bg-color);
+  border-color: var(--text-color);
+  transform: translateY(-2px);
 }
 
-/* BOTÃO VERDE NEON */
-.button-neon {
-    background: #39ff14;
-    color: #000;
-    border: 2px solid #39ff14;
+/* Foco acessível */
+.button:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 3px rgba(0,0,0,.25),
+    0 0 0 6px var(--ring-color);
+}
 
+/* Botão destaque (verde Place) */
+.button-neon {
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+  color: var(--accent-ink);
+  box-shadow: 0 0 18px var(--ring-color);
 }
 
 .button-neon:hover {
-    background: #000;
-    color: #39ff14;
-    box-shadow: 0 0 20px #39ff14, 0 0 40px #39ff14;
+  background: transparent;
+  color: var(--accent-color);
+  box-shadow: 0 0 24px var(--ring-color);
 }
 
-/* TEXTO AUXILIAR */
-.footer-text {
-    margin-top: 20px;
-    font-size: 0.9em;
-    color: #aaa;
-}
-
-/* RODAPÉ FIXO */
+/* Rodapé */
 footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(10px);
-    color: #888;
-    font-size: 0.85em;
-    text-align: center;
-    padding: 12px 0;
-    z-index: 1;
-    animation: footerSlideUp 1.5s ease-in-out;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0,0,0,.06);
+  backdrop-filter: blur(10px);
+  color: var(--muted-color);
+  border-top: 1px solid var(--border-color);
+  font-size: 0.85em;
+  text-align: center;
+  padding: 12px 0;
+  z-index: 1;
+  animation: footerSlideUp 1.5s ease-in-out;
+  transition: background .6s ease, color .6s ease, border-color .6s ease;
 }
 
-/* ANIMAÇÕES */
+/* =========================
+   BOTÃO FLUTUANTE DARK MODE
+   ========================= */
+#theme-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.12);
+  color: var(--accent-color);
+  font-size: 1.6rem;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: background .3s ease, transform .3s ease, color .3s ease, box-shadow .3s ease;
+}
+
+#theme-toggle:hover {
+  transform: scale(1.08);
+  background: rgba(255,255,255,0.22);
+  box-shadow: 0 8px 24px rgba(0,0,0,.18);
+}
+
+/* Acessibilidade: texto invisível para leitores de tela */
+.sr-only {
+  position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+  overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
+}
+
+/* Botão (você já tem) — apenas reforço da classe */
+.theme-toggle#theme-toggle {
+  display:grid; place-items:center;
+  font-size:0; /* não depender de font-size para ícone */
+}
+
+/* Ícones */
+.theme-toggle .icon {
+  width:22px; height:22px;
+  stroke-width:1.8;
+  color: var(--accent-color);
+  transition: opacity .25s ease, transform .25s ease, color .3s ease;
+  position:absolute;
+}
+
+/* Estado padrão (modo escuro): mostra lua, esconde sol */
+.theme-toggle .icon-sun { opacity:0; transform: scale(.9) rotate(-8deg); }
+.theme-toggle .icon-moon { opacity:1; transform: scale(1) rotate(0deg); }
+
+/* Quando [data-theme="light"]: mostra sol, esconde lua */
+[data-theme="light"] .theme-toggle .icon-sun { opacity:1; transform: scale(1) rotate(0deg); }
+[data-theme="light"] .theme-toggle .icon-moon { opacity:0; transform: scale(.9) rotate(8deg); }
+
+/* Hover mantém seu efeito; ícone acompanha a cor de acento */
+.theme-toggle:hover .icon { transform: scale(1.06); }
+
+
+/* =========================
+   ANIMAÇÕES
+   ========================= */
 @keyframes slideIn {
-    0% {
-        transform: translateY(50px);
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
+  0%   { transform: translateY(50px); opacity: 0; }
+  100% { transform: translateY(0);    opacity: 1; }
 }
 
 @keyframes floating {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-8px);
-    }
+  0%,100% { transform: translateY(0); }
+  50%     { transform: translateY(-8px); }
 }
 
 @keyframes pulse {
-    0%, 100% {
-        box-shadow: 0 0 8px #39ff14;
-    }
-    50% {
-        box-shadow: 0 0 18px #39ff14;
-    }
+  0%,100% { box-shadow: 0 0 8px var(--accent-color); }
+  50%     { box-shadow: 0 0 18px var(--accent-color); }
 }
 
 @keyframes footerSlideUp {
-    0% {
-        transform: translateY(100%);
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
+  0%   { transform: translateY(100%); opacity: 0; }
+  100% { transform: translateY(0);    opacity: 1; }
+}
+
+/* Respeita usuários com redução de movimento */
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
 }
